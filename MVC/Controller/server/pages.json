@@ -1,0 +1,93 @@
+{
+    "pages": [
+      {
+        "pageId": "1",
+        "pageName": "SignIn",
+        "title": "SIGN IN",
+        "url": "/signin",
+        "galleryId": 1,
+        "formId": "1"
+      },
+      {
+        "pageId": "2",
+        "pageName": "About Us",
+        "title": "ABOUT US",
+        "h1": "Welcome to our Virtual Gallery Experience!",
+        "content1": "At ArtVista, we believe in the trans-formative power of art. Our platform is where artists and art enthusiasts from around the globe can connect, explore, and share their passion for creativity.",
+        "story":"Our Story",
+        "content2":"Founded in 2024, ArtVista aims to revolutionize art appreciation through a digital lens.",
+        "mission":"Our Mission",
+        "content3": "strive to democratize art, making it accessible to everyone, everywhere. Through our platform, we aim to create a global community of artists and art lovers who celebrate creativity.",
+        "offer": "What We Offer?",
+        "content4": {"array": ["Immersive Virtual Galleries: Explore stunning virtual galleries from home.", "NFT Artwork: Discover and collect unique NFT artworks from talented artists.", "Community and Collaboration: Join a vibrant community of artists and art enthusiasts.", "Accessibility: Enjoy art and connect with others, regardless of physical location."]},
+        "final": "Join us on this creative journey! Explore, connect, and be inspired through art at ArtVista!",
+        "url": "/aboutUs"
+      },
+      {
+        "pageId": "3",
+        "pageName": "SignUp",
+        "title": "SIGN UP",
+        "url": "/signup",
+        "formId": "2"
+      },
+      {
+        "pageId": "4",
+        "pageName": "ContactUs",
+        "title": "Contact Us",
+        "url": "/contactUs",
+        "formId": "3"
+      },
+      {
+        "pageId": "5",
+        "pageName": "virtualGallery",
+        "title": "Virtual Gallery",
+        "url": "/virtualGallery",
+        "startButton": "Start Now"
+      },
+      {
+        "pageId": "6",
+        "pageName": "HomePage",
+        "title": "Welcome to ArtVista!",
+        "url": "/",
+        "content": "ArtVista is your ultimate platform for exploring and sharing stunning digital art. Create, upload, and showcase your artwork in our virtual gallery. Join our community to connect with fellow artists and art enthusiasts.",
+        "signupButton": "Sign Up",
+        "signinButton": "Sign In"
+      },
+      {
+        "pageId": "7",
+        "pageName": "privacyPolicy",
+        "title": "Privacy Policy",
+        "url":"/privacyPolicy",
+        "content": "Your privacy is important to us. This privacy policy document outlines the types of personal information that is received and collected by ArtVista and how it is used.",
+        "sections": [
+          {
+            "title": "Information We Collect",
+            "content": "We collect information to provide better services to our users. The types of information we collect include..."
+          },
+          {
+            "title": "How We Use Information",
+            "content": "We use the information we collect in various ways, including to provide, operate, and maintain our website..."
+          },
+          {
+            "title": "Third-Party Services",
+            "content": "We may employ third-party companies and individuals due to the following reasons: \n1. To facilitate our Service; \n2. To provide the Service on our behalf; \n3. To perform Service-related services; \n4. To assist us in analyzing how our Service is used. \nThese third parties have access to your Personal Information only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose."
+          },
+          {
+            "title": "Security",
+            "content": "We value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it..."
+          },
+          {
+            "title": "Changes to This Privacy Policy",
+            "content": "We may update our Privacy Policy from time to time. Thus, we advise you to review this page periodically for any changes..."
+          },
+          {
+            "title": "Contact Us",
+            "content": "If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at privacy@artvista.com."
+          }
+        ]
+      }
+  
+
+    ]
+  }
+  

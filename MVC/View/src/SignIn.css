@@ -1,0 +1,652 @@
+.signInMainDev{
+   
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-image: url(./images/gallery.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+.signInTitle {
+    color: #fff;
+    font-family: "Poetsen One", sans-serif;
+    font-size: 50px;
+    left: 10%;
+    top:5%;
+    position: relative;
+}
+
+
+
+a.googleIcon {
+    position: relative;
+    left: 45%;
+    font-size: 24px;
+    top: 0.2rem;
+}
+.icon {
+    margin: 0px 15px;
+}
+.password-icon {
+    position: relative;
+    right: 7%;
+    cursor: pointer;
+}
+
+
+/* For phones: */
+@media (min-width: 480px) {
+     
+.signInForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    right: 12%;
+    top: 22%;
+    width: 53%;
+    height: 63%;
+    border-radius: 93px;
+    background-color: #fff;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    box-shadow: -10px -10px 4px 0px #00000040;
+    z-index: 2;
+}
+
+.signInformTitle {
+    position: relative;
+    text-align: center;
+    color: #5b340c;
+    font-family: "Poetsen One", sans-serif;
+    font-size: 28px;
+    padding-bottom: 5%;
+}
+
+.signInText {
+    position: relative;
+    font-size: 15px;
+    top: 0.8rem;
+    text-align: center;
+    color: hsl(39, 30%, 25%);
+    font-family: "Khula", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.inputs {
+    position: relative;
+    right: 20%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+.inputContainer {
+    position: relative;
+    width: 80%;
+    align-items: center;
+    display: flex;
+    margin: auto;
+    top: 35%;
+    left: 22%;
+    background: #f6cfa0;
+    border-radius: 50px;
+    outline: none;
+    box-shadow: inset 10px 20px 20px 0px #00000040;
+}
+
+.inputContainer input {
+    color: black;
+    border: none;
+    margin: auto;
+    background: transparent;
+    width: 80%;
+    height: 45px;
+    border-radius: 50px;
+    outline: none;
+}
+a.forgetPass {
+    position: relative;
+    top: 10%;
+    font-size: 16px;
+    font-family: "Khula", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    text-decoration: none;
+    text-align: center;
+    text-underline-offset: 0px;
+    color: #52452c;
+}
+
+.signinButton {
+    width: 80%;
+    height: 15%;
+    position: relative;
+    border-radius: 95px;
+   top: 15%;
+font-family: "Khula", sans-serif;
+    font-weight: 600;
+    font-size: 25px;
+    font-style: normal;
+    background-color: #a08972;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+}
+
+.half-circle {
+    position: absolute;
+    left:23%;
+    top: 75%;
+    background-color: #171512;
+    height: 30%;
+    width: 80%;
+    border-radius: 50% / 100% 100% 0 0;
+    z-index: 1;
+}
+
+.register {
+    position: relative;
+    cursor: pointer;
+    background-color: #171512;
+    font-family: "Khula", sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    text-decoration: none;
+    color: #f6cfa0;
+    top: 25%;
+    left: 40%;
+    border: 0;
+}
+
+
+}
+
+@media (min-width: 512px) {
+    .signInForm {
+        
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        left: 40%;
+        width: 50%;
+        height: 60%;
+        top:14%;
+        border-radius: 93px;
+        background-color: #fff;
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        box-shadow: -10px -10px 4px 0px #00000040;
+        z-index: 2;
+    }
+
+    .signInformTitle {
+        position: relative;
+        text-align: center;
+        color: #5b340c;
+        font-family: "Poetsen One", sans-serif;
+        font-size: 28px;
+        top: 0%;
+    }
+
+    .signInText {
+        position: relative;
+        font-size: 15px;
+        color: #52452c;
+        font-family: "Khula", sans-serif;
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    .inputs {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .inputContainer {
+        position: relative;
+        align-items: center;
+        display: flex;
+        margin: auto;
+        background: #f6cfa0;
+        border-radius: 50px;
+        outline: none;
+        box-shadow: inset 10px 20px 20px 0px #00000040;
+    }
+
+    .inputContainer input {
+        color: black;
+        border: none;
+        margin: auto;
+        background: transparent;
+        width: 80%;
+        height: 45px;
+        border-radius: 50px;
+        outline: none;
+    }
+
+    a.forgetPass {
+        position: relative;
+        font-size: 16px;
+        font-family: "Khula", sans-serif;
+        font-weight: 600;
+        font-style: normal;
+        text-decoration: none;
+        text-underline-offset: 0px;
+        color: #52452c;
+    }
+
+    .signinButton {
+        width: 80%;
+        height: 15%;
+        position: relative;
+        border-radius: 95px;
+        font-family: "Khula", sans-serif;
+        font-weight: 600;
+        font-size: 25px;
+        font-style: normal;
+        background-color: #a08972;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+    }
+
+    .half-circle {
+        position: absolute;
+        background-color: #171512;
+        height: 30%;
+        width: 80%;
+        left: 23%;
+        border-radius: 50% / 100% 100% 0 0;
+        z-index: 1;
+    }
+
+    .register {
+        position: relative;
+        cursor: pointer;
+        background-color: #171512;
+        font-family: "Khula", sans-serif;
+        font-weight: 600;
+        font-size: 26px;
+        text-decoration: none;
+        color: #f6cfa0;
+        border: 0;
+    }
+}
+@media (min-width: 712px) {
+    .signInForm {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        left: 50%;
+        width: 35%;
+        height: 60%;
+        border-radius: 93px;
+        background-color: #fff;
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        box-shadow: -10px -10px 4px 0px #00000040;
+        z-index: 2;
+    }
+
+    .signInformTitle {
+        position: relative;
+        text-align: center;
+        color: #5b340c;
+        font-family: "Poetsen One", sans-serif;
+        font-size: 28px;
+    }
+
+    .signInText {
+        position: relative;
+        font-size: 15px;
+        color: #52452c;
+        font-family: "Khula", sans-serif;
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    .inputs {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .inputContainer {
+        position: relative;
+        align-items: center;
+        display: flex;
+        margin: auto;
+        background: #f6cfa0;
+        border-radius: 50px;
+        outline: none;
+        box-shadow: inset 10px 20px 20px 0px #00000040;
+    }
+
+    .inputContainer input {
+        color: black;
+        border: none;
+        margin: auto;
+        background: transparent;
+        width: 80%;
+        height: 45px;
+        border-radius: 50px;
+        outline: none;
+    }
+
+    a.forgetPass {
+        position: relative;
+        font-size: 16px;
+        font-family: "Khula", sans-serif;
+        font-weight: 600;
+        font-style: normal;
+        text-decoration: none;
+        text-underline-offset: 0px;
+        color: #52452c;
+        padding-top: 3%;
+
+    }
+
+    .signinButton {
+        width: 80%;
+        height: 15%;
+        position: relative;
+        border-radius: 95px;
+        font-family: "Khula", sans-serif;
+        font-weight: 600;
+        font-size: 25px;
+        font-style: normal;
+        background-color: #a08972;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+    }
+
+    .half-circle {
+        position: absolute;
+        background-color: #171512;
+        height: 30%;
+        width: 70%;
+        left: 32%;
+        border-radius: 50% / 100% 100% 0 0;
+        z-index: 1;
+    }
+
+    .register {
+        position: relative;
+        cursor: pointer;
+        background-color: #171512;
+        font-family: "Khula", sans-serif;
+        font-weight: 600;
+        font-size: 26px;
+        text-decoration: none;
+        color: #f6cfa0;
+        border: 0;
+    }
+}
+@media (min-width: 960px) {
+    .signInForm {
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        left: 55%;
+        width: 30%;
+        height: 60%;
+        border-radius: 93px;
+        background-color: #fff;
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        box-shadow: -10px -10px 4px 0px #00000040;
+        z-index: 2;
+    }
+
+    .signInformTitle {
+        position: relative;
+        text-align: center;
+        color: #5b340c;
+        font-family: "Poetsen One", sans-serif;
+        font-size: 28px;
+    }
+
+    .signInText {
+        position: relative;
+        font-size: 15px;
+        color: #52452c;
+        font-family: "Khula", sans-serif;
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    .inputs {
+        width: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .inputContainer {
+        position: relative;
+        align-items: center;
+        display: flex;
+        margin: auto;
+        background: #f6cfa0;
+        border-radius: 50px;
+        outline: none;
+        box-shadow: inset 10px 20px 20px 0px #00000040;
+    }
+
+    .inputContainer input {
+        color: black;
+        border: none;
+        margin: auto;
+        background: transparent;
+        height: 45px;
+        border-radius: 50px;
+        outline: none;
+    }
+
+    a.forgetPass {
+        position: relative;
+        font-size: 16px;
+        font-family: "Khula", sans-serif;
+        font-weight: 600;
+        font-style: normal;
+        text-decoration: none;
+        text-underline-offset: 0px;
+        color: #52452c;
+        padding-top: 3%;
+
+    }
+
+    .signinButton {
+        width: 80%;
+        height: 15%;
+        position: relative;
+        border-radius: 95px;
+        font-family: "Khula", sans-serif;
+        font-weight: 600;
+        font-size: 25px;
+        font-style: normal;
+        background-color: #a08972;
+        cursor: pointer;
+        color: #fff;
+        border: 0;
+    }
+
+    .half-circle {
+        position: absolute;
+        background-color: #171512;
+        height: 30%;
+        width: 60%;
+        left: 42%;
+        border-radius: 50% / 100% 100% 0 0;
+        z-index: 1;
+    }
+
+    .register {
+        position: relative;
+        cursor: pointer;
+        background-color: #171512;
+        font-family: "Khula", sans-serif;
+        font-weight: 600;
+        font-size: 26px;
+        text-decoration: none;
+        color: #f6cfa0;
+        border: 0;
+    }
+}
+/* for desktop*/
+@media (min-width : 1200px) {
+.signInForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    left:71%;
+    width: 20%;
+    height: 65%;
+    top:10%;
+    border-radius: 93px;
+    background-color: #fff;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    box-shadow: -10px -10px 4px 0px #00000040;
+    z-index: 2;
+}
+
+.signInformTitle {
+    position: relative;
+    text-align: center;
+    color: #5b340c;
+    font-family: "Poetsen One", sans-serif;
+    font-size: 28px;
+    padding-bottom: 5%;
+}
+
+.signInText {
+    position: relative;
+    font-size: 15px;
+    top: 0.8rem;
+    text-align: center;
+    color: hsl(39, 30%, 25%);
+    font-family: "Khula", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.inputs {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+.inputContainer {
+    position: relative;
+    align-items: center;
+    display: flex;
+    margin: auto;
+    
+    background: #f6cfa0;
+    border-radius: 50px;
+    outline: none;
+    box-shadow: inset 10px 20px 20px 0px #00000040;
+}
+
+.inputContainer input {
+    color: black;
+    border: none;
+    margin: auto;
+    background: transparent;
+    width: 80%;
+    height: 45px;
+    border-radius: 50px;
+    outline: none;
+}
+
+
+
+a.forgetPass {
+    position: relative;
+    top: 10%;
+    font-size: 16px;
+    font-family: "Khula", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    text-decoration: none;
+    text-align: center;
+    text-underline-offset: 0px;
+    color: #52452c;
+}
+
+.signinButton {
+    width: 80%;
+    height: 15%;
+    position: relative;
+    border-radius: 95px;
+   top: 15%;
+font-family: "Khula", sans-serif;
+    font-weight: 600;
+    font-size: 25px;
+    font-style: normal;
+    background-color: #a08972;
+    padding: 5%;
+text-align: center;    cursor: pointer;
+    color: #fff;
+    border: 0;
+    text-decoration: none;
+}
+
+.half-circle {
+    position: absolute;
+    left:60.5%;
+    background-color: #171512;
+    height: 30%;
+    width: 40%;
+    border-radius: 50% / 100% 100% 0 0;
+    z-index: 1;
+}
+
+.register {
+    position: relative;
+    cursor: pointer;
+    background-color: #171512;
+    font-family: "Khula", sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    text-decoration: none;
+    color: #f6cfa0;
+    top: 22%;
+    left: 44%;
+    border: 0;
+}
+
+}
+

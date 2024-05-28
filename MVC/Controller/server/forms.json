@@ -1,0 +1,75 @@
+{
+    "forms": [
+      {
+        "formId": "1",
+        "title": "Welcome Back",
+        "googleIcon": "faGoogle",
+        "text": "Or Use UR Email Password",
+        "inputs": {
+          "emailInput": {
+            "type": "email",
+            "placeholder": "Email",
+            "icon": "faEnvelope"
+          },
+          "passInput": {
+            "type": "password",
+            "placeholder": "Password",
+            "icons": ["faKey", "faEye", "faEyeSlash"]
+          }
+        },
+        "signinButton": "LOG IN",
+        "forgotPass": "Forgot Password?",
+        "text2": "Register"
+      },
+      {
+        "formId": "2",
+        "title": "Create Account",
+        "googleIcon": "faGoogle",
+        "text": "Or Use UR Email For Registration",
+        "inputs": {
+            "nameInput":{
+              "type": "text",
+              "placeholder": "Name",
+              "icon": "faUser"
+
+            },
+            "emailInput": {
+              "type": "email",
+              "placeholder": "Email",
+              "icon": "faEnvelope"
+            },
+            "passInput": {
+              "type": "password",
+              "placeholder": "Password",
+              "icons": ["faKey", "faEye", "faEyeSlash"]
+            }
+          },
+        "signUnButton": "SIGN UP",
+        "text2": "LOG IN",
+        "galleryId": 1
+      },
+      {
+        "formId": "3",
+        "inputs": {
+          "fnameInput": {
+            "type": "text",
+            "placeholder": "Full Name",
+            "icon": "faUser"
+          },
+          "emailInput": {
+            "type": "email",
+            "placeholder": "Email",
+            "icon": "faEnvelope"
+          },
+          "messageInput": {
+            "type": "text",
+            "placeholder": "Your Message",
+            "icon": "faMessage"
+          }
+        },
+        "sendButton": "Send Message"
+      }
+      
+    ]
+  }
+  

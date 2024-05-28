@@ -1,0 +1,102 @@
+{
+  "menu": [
+    {
+      "menuId": "1",
+      "text": "Home",
+      "url": "/",
+      "class": "headerMenu",
+      "idCss": "headerMenu"
+    },
+
+    {
+      "menuId": "1",
+      "text": "About Us",
+      "url": "/aboutus",
+      "class": "headerMenu",
+      "idCss": "headerMenu"
+    },
+    {
+      "menuId": "1",
+      "text": "Sign In",
+      "url": "/signin",
+      "class": "headerMenu",
+      "idCss": "headerMenu"
+    },
+    {
+        "menuId": "2",
+        "text": "Contact Us",
+        "url": "/contactus",
+        "class": "footerMenu",
+        "idCss": "footerMenu"
+      },
+     
+    {
+      "menuId": "2",
+      "text": "2024 ArtVista, All rights reserved",
+      "class": "footerMenu",
+      "idCss": "footerMenu"
+    },
+    {
+        "menuId": "2",
+        "text": "Privacy Policy",
+        "url": "/privacyPolicy",
+        "class": "footerMenu",
+        "idCss": "footerMenu"
+      },
+
+      {
+        "menuId": "3",
+        "text": "Home",
+        "url": "/firstpage",
+        "icon":"faHouse",
+        "class": "sideBarMenu",
+        "idCss": "sideBarMenu"
+      },
+
+    {
+      "menuId": "3",
+      "text": "Virtual Gallery",
+      "icon": "faImage",
+      "url": "/virtualGallery",
+      "class": "sideBarMenu",
+      "idCss": "sideBarMenu"
+    },
+    {
+      "menuId": "3",
+      "text": "Profile",
+      "url": "/profile",
+      "icon": "faUser",
+      "class": "sideBarMenu",
+      "idCss": "sideBarMenu"
+    },
+    {
+        "menuId": "3",
+        "text": "History",
+        "url": "/history",
+        "icon":"faClockRotateLeft",
+        "class": "sideBarMenu",
+        "idCss": "sideBarMenu"
+      },
+      {
+        "menuId": "4",
+        "text": "About Us",
+        "url": "/aboutus",
+        "class": "header2Menu",
+        "idCss": "header2Menu"
+      },
+      {
+        "menuId": "4",
+        "text": "Home",
+        "url": "/firstpage",
+        "class": "header2Menu",
+        "idCss": "header2Menu"
+      },
+      {
+        "menuId": "4",
+        "text": "Sign Out",
+        "url": "/",
+        "class": "header2Menu",
+        "idCss": "header2Menu"
+      }
+  ]
+}
