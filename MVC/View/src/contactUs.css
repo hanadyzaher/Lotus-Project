@@ -1,117 +1,117 @@
 .contactUsContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 20px;
-  }
-  
-  .contactUsImageContainer {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-right: 20px;
-    padding-top: 6%;
-  }
-  
-  .contactUsImage {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-  }
-  
-  .contactUsFormContainer {
-    flex: 1;
-  }
-  
-  .contactUsTitle {
-    font-size: 40px;
-    text-align: center;
-    margin-bottom: 5%;
-    color: #b67f53;
-    font-family: "DM Serif Text", serif;
-    font-weight: 400;
-    font-style: normal;
-    padding-top: 5%;
-  }
-  
-  .contactUsForm {
-    display: flex;
-    flex-direction: column;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+}
 
-  .contactUsInputs {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .contactUsNameRow {
-    display: flex;
-    gap: 3%; /* Add space between first and last name inputs */
-    margin-bottom: 1%;
-  }
-  
-  .contactUsInputContainer {
-    display: flex;
-    align-items: center;
-    margin-bottom: 2%;
-  }
-  
-  .contactsIcon {
-    margin-right: 2%;
-  }
-  
-  .contactUsInputContainerMessage .contactsIcon {
-    display: flex;
-    align-items: center;
-    margin-top: 2%; /* Align with the padding of the input */
-  }
-  
-  input,
-  textarea {
-    flex: 1;
-    padding: 2%;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 1%;
-    width: 100%; /* Ensure all inputs take full width of their container */
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
-  }
-  
-  textarea {
-    height: 100%; /* Adjust the height as needed */
-    resize: vertical; /* Allow vertical resizing */
-  }
-  
-  .sendMessageContainer {
-    position: relative;
-    display: flex;
-    right: 40%;
-    text-align: center;
-    justify-content: center; /* מרכז את הכפתור */
-    width: 100%; /* התאמת הרוחב של הקונטיינר */
-  }
-  
-  .sendMessage {
-    position: absolute;
-    font-family: "DM Serif Text", serif;
-    font-weight: 400;
-    padding: 8px 16px; /* התאמת ה-padding להקטנת הכפתור */
-    font-size: 20px;    /* התאמת ה-font-size להקטנת הטקסט בכפתור */
-    background-color: #a9acb5;
-    color: white;
-    text-align: center;
-    justify-content: center;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background-color 0.3s ease; /* הוספת אפקט מעבר חלק */
-    width: auto; /* התאמת הרוחב של הכפתור */
-    max-width: 30%; /* קביעת רוחב מקסימלי לכפתור */
-    right: 20%;
-    top:56%;
-  }
-  
-  .sendMessage:hover {
-    background-color: #ccc; /* שינוי צבע הרקע בהנחת העכבר */
-  }
-  
+.contactUsImageContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 20px;
+  padding-top: 9%;
+}
+
+.contactUsImage {
+  max-width: 100%;
+  height: 40%;
+  border-radius: 8px;
+}
+
+.contactUsFormContainer {
+  flex: 1;
+}
+
+.contactUsTitle {
+  font-size: 40px;
+  text-align: center;
+  margin-bottom:8%;
+  color: #b67f53;
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: normal;
+  padding-top: 7%;
+}
+
+.contactUsForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactUsInputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactUsNameRow {
+  display: flex;
+  gap: 3%; /* Add space between first and last name inputs */
+  margin-bottom: 4%;
+}
+
+.contactUsInputContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3%;
+}
+
+.contactsIcon {
+  margin-right: 2%;
+}
+
+.contactUsInputContainerMessage .contactsIcon {
+  display: flex;
+  align-items: center;
+  margin-top: 2%; /* Align with the padding of the input */
+}
+
+input,
+textarea {
+  flex: 1;
+  padding: 2%;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 1%;
+  width: 100%; /* Ensure all inputs take full width of their container */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+textarea {
+  height: 100%; /* Adjust the height as needed */
+  resize: vertical; /* Allow vertical resizing */
+}
+
+.sendMessageContainer {
+  position: relative;
+  display: flex;
+  right: 40%;
+  text-align: center;
+  justify-content: center; /* מרכז את הכפתור */
+  width: 100%; /* התאמת הרוחב של הקונטיינר */
+}
+
+.sendMessage {
+  position: absolute;
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: normal;
+  padding: 8px 16px; /* התאמת ה-padding להקטנת הכפתור */
+  font-size: 20px;    /* התאמת ה-font-size להקטנת הטקסט בכפתור */
+  background-color: #a9acb5;
+  color: white;
+  text-align: center;
+  justify-content: center;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease; /* הוספת אפקט מעבר חלק */
+  width: auto; /* התאמת הרוחב של הכפתור */
+  max-width: 30%; /* קביעת רוחב מקסימלי לכפתור */
+  right: 20%;
+  top:65%;
+}
+
+.sendMessage:hover {
+  background-color: #ccc; /* שינוי צבע הרקע בהנחת העכבר */
+}

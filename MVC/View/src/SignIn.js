@@ -18,25 +18,29 @@ class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: "",
       showPassword: false,
       passIconIndex: 2, // Index of the icon to show in password input
-      homePage: null,
-      form: null,
+      pageData: null,
     };
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/pages/1')
-      .then((res) => res.json())
-      .then((data) => this.setState({ homePage: data }))
+    fetch('http://localhost:3001/data/1', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((err) => { throw err; });
+        }
+        return res.json();
+      })
+      .then((data) => {
+        this.setState({ pageData: data });
+      })
       .catch((err) => console.error('Failed to fetch page data:', err));
-
-    fetch('http://localhost:3001/forms/1')
-      .then((res) => res.json())
-      .then((data) => this.setState({ form: data }))
-      .catch((err) => console.error('Failed to fetch form data:', err));
   }
 
   handleChange = (e) => {
@@ -56,71 +60,26 @@ class SignIn extends Component {
   };
 
   render() {
-    const { email, password, showPassword, passIconIndex, homePage, form } = this.state;
+    const { showPassword, passIconIndex, pageData } = this.state;
 
-    if (!homePage || !form) {
+    if (!pageData) {
       return <div>Loading...</div>;
     }
+
+    const { page, form } = pageData;
 
     return (
       <div className="signInMainDev">
         <Header />
-        <h1 className="signInTitle">{homePage.title}</h1>
-        <form className="signInForm">
-          <h2 className="signInformTitle">{form.title}</h2>
-          <div>
-            <a href="#" className="googleIcon">
-              <i>
-                <FontAwesomeIcon
-                  icon={iconMapping[form.googleIcon]}
-                  style={{ color: "#724C14" }}
-                />
-              </i>
-            </a>
-          </div>
-          <h1 className="signInText">{form.text}</h1>
-          <div className="inputs">
-            <div className="inputContainer">
-              <FontAwesomeIcon
-                icon={iconMapping[form.inputs.emailInput.icon]}
-                className="icon"
-              />
-              <input
-                type={form.inputs.emailInput.type}
-                name="email"
-                value={email}
-                placeholder={form.inputs.emailInput.placeholder}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="inputContainer">
-              <FontAwesomeIcon
-                icon={iconMapping[form.inputs.passInput.icons[0]]}
-                className="icon"
-              />
-              <input
-                type={showPassword ? "text" : "password"}
-                name="password"
-                value={password}
-                placeholder={form.inputs.passInput.placeholder}
-                onChange={this.handleChange}
-              />
-              <FontAwesomeIcon
-                icon={iconMapping[form.inputs.passInput.icons[passIconIndex]]}
-                onClick={this.togglePassIcon}
-                className="password-icon"
-              />
-            </div>
-          </div>
-
-          <a href="#" className="forgetPass">
-            {form.forgotPass}
-          </a>
-          <Link to="/firstpage" className="signinButton">
-            {form.signinButton}
-          </Link>
-          <Link to="/signup" className="register">{form.text2}</Link>
-        </form>
+        <h1 className="signInTitle">{page.title}</h1>
+          <form className="signInForm">
+            <h2 className="signInformTitle">{form.title}</h2>
+            <h1 className="signInText">{form.text}</h1>
+            <Link to="/firstpage" className="signinButton">
+              {form.signinButton}
+            </Link>
+          </form>
+        
         <div className="half-circle"></div>
       </div>
     );

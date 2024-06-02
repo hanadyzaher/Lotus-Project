@@ -79,15 +79,15 @@
       },
       {
         "menuId": "4",
-        "text": "About Us",
-        "url": "/aboutus",
+        "text": "Home",
+        "url": "/firstpage",
         "class": "header2Menu",
         "idCss": "header2Menu"
       },
       {
         "menuId": "4",
-        "text": "Home",
-        "url": "/firstpage",
+        "text": "About Us",
+        "url": "/aboutus",
         "class": "header2Menu",
         "idCss": "header2Menu"
       },

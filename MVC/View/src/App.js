@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Sidebar from './SideBar';
 import SignIn from './SignIn';
 import AboutUs from './AboutUs';
-import SignUp from './SignUp';
 import FirstPage from './FirstPage';
 import ContactUs from './ContactUs';
 import VirtualGallery from './VirtualGallery';
@@ -27,7 +26,6 @@ function App() {
        
         </Route>
           <Route path="/aboutus" element={<AboutUs />} />
-          <Route path="/signup" element={<SignUp/>}/>
           <Route path="/signin" element={<SignIn/>}/>
           <Route path="/contactUs" element={<ContactUs/>}/>
           <Route path="" element={<Home/>}/>

@@ -12,7 +12,12 @@ class PrivacyPolicy extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/pages/7')
+    fetch('http://localhost:3001/pages/7', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
       .then(response => response.json())
       .then(data => this.setState({ pageData: data }))
       .catch(error => console.error('Error fetching page data:', error));
@@ -29,14 +34,26 @@ class PrivacyPolicy extends Component {
       <div>
         <Header />
         <div className="privacy-policy-container">
-          <h1>{pageData.title}</h1>
-          <p>{pageData.content}</p>
-          {pageData.sections && pageData.sections.map((section, index) => (
-            <div key={index}>
-              <h2>{section.title}</h2>
-              <p>{section.content}</p>
-            </div>
-          ))}
+          <div className="privacy-sidebar">
+            <h3>On This Page</h3>
+            <ul>
+              {pageData.sections.map((section, index) => (
+                <li key={index}>
+                  <a href={`#${section.id}`}>{section.title}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="privacy-content">
+            <h1>{pageData.title}</h1>
+            <p>{pageData.content}</p>
+            {pageData.sections && pageData.sections.map((section, index) => (
+              <div key={index} id={section.id}>
+                <h2>{section.title}</h2>
+                <p>{section.content}</p>
+              </div>
+            ))}
+          </div>
         </div>
         <Footer />
       </div>

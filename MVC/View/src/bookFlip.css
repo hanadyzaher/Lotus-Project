@@ -1,0 +1,257 @@
+.book-flip-container {
+    font-family: "Poppin", sans-serif;
+    background-color: #F1DDBF;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .book {
+    width: 350px;
+    height: 450px;
+    position: relative;
+    transition-duration: 1s;
+    perspective: 1500px;
+  }
+  
+  .book-flip-container input {
+    display: none;
+  }
+  
+  .cover, .back-cover {
+    background-color: #a08972;
+    width: 100%;
+    height: 100%;
+    border-radius: 0 15px 15px 0;
+    box-shadow: 0 0 5px rgb(41, 41, 41);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center left;
+    position: relative;
+  }
+  
+  .cover {
+    position: absolute;
+    z-index: 4;
+    transition: transform 1s;
+  }
+  
+  .cover label {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* Ensure vertical alignment */
+  }
+  
+  .cover-content {
+    text-align: center;
+    color: white;
+    transition: opacity 1s;
+  }
+  
+  .cover-content h2 {
+    margin-top: 1%;
+    font-family: "Poetsen One", sans-serif;
+    font-size: 30px;
+  }
+  
+  .cover-content h1 {
+    margin-bottom: 10%;
+    font-family: "Poetsen One", sans-serif;
+    font-size: 40px;
+  }
+  
+  .about-logo-image {
+    width: 100px; /* Adjust the width to your preference */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px; /* Add some space below the logo */
+  }
+  
+  #checkbox-cover:checked ~ .book .cover-content {
+    opacity: 0; /* Hide the cover content when the cover is opened */
+  }
+  
+  .back-cover {
+    position: relative;
+    z-index: -1;
+  }
+  
+  .page {
+    position: absolute;
+    background-color: white;
+    width: 330px;
+    height: 430px;
+    border-radius: 0 15px 15px 0;
+    margin-top: 10px;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    transition-duration: 1.5s;
+  }
+  
+  .about-image {
+    width: 100%;
+    height: 60%;
+    border-radius: 50%;
+  }
+  
+  .fpageTitle {
+    font-family: "Oleo Script", system-ui;
+    text-align: center;
+    margin-bottom: 20%;
+    margin-top: 10%;
+  }
+  
+  .front-page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    box-sizing: border-box;
+    padding: 1rem;
+  }
+  
+  .back-page {
+    transform: rotateY(180deg);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    z-index: 99;
+  }
+  
+  .storyTitle {
+    text-align: center;
+    margin-top: 4%;
+    font-family: "Noto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 30px;
+  }
+  
+  .story-image {
+    height: 70%;
+    width: 90%;
+    border-radius: 50%;
+    margin-top: 5%;
+    top: 5%;
+    margin-left: 5%;
+  }
+  
+  .story-paragraph {
+    text-align: center;
+    font-family: "Noto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 45%;
+  }
+  
+  .back-cover-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .back-cover-content h1 {
+    margin-top: 0;
+    color: #FFF;
+    font-family: "Poetsen One", sans-serif;
+    font-size: 40px;
+  }
+  
+  .mission-paragraph {
+    text-align: center;
+    font-family: "Noto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 30%;
+  }
+  
+  .offerList {
+    justify-items: center;
+    text-align: center;
+    font-family: "Noto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20%;
+    margin-left: 10%;
+  }
+  
+  .next, .prev {
+    position: absolute;
+    bottom: 1em;
+    cursor: pointer;
+  }
+  
+  .next {
+    right: 1em;
+  }
+  
+  .prev {
+    left: 1em;
+  }
+  
+  #page1 {
+    z-index: 3;
+  }
+  
+  #page2 {
+    z-index: 2;
+  }
+  
+  #page3 {
+    z-index: 1;
+  }
+  
+  #page4 {
+    z-index: 0;
+  }
+  
+  #checkbox-cover:checked ~ .book {
+    transform: translateX(200px);
+  }
+  
+  #checkbox-cover:checked ~ .book .cover {
+    transition: transform 1.5s, z-index 0.5s 0.5s;
+    transform: rotateY(-180deg);
+    z-index: 1;
+  }
+  
+  #checkbox-cover:checked ~ .book .page {
+    box-shadow: 0 0 3px rgb(99, 98, 98);
+  }
+  
+  #checkbox-page1:checked ~ .book #page1 {
+    transform: rotateY(-180deg);
+    z-index: 2;
+  }
+  
+  #checkbox-page2:checked ~ .book #page2 {
+    transform: rotateY(-180deg);
+    z-index: 3;
+  }
+  
+  #checkbox-page3:checked ~ .book #page3 {
+    transform: rotateY(-180deg);
+    z-index: 4;
+  }
+  
+  #checkbox-page4:checked ~ .book #page4 {
+    transform: rotateY(-180deg);
+    z-index: 5;
+  }
+  

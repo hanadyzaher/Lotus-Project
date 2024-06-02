@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import './header.css';
+import logo from './images/logo2.png';
+
 
 class Header2 extends Component {
   constructor(props) {
@@ -13,7 +15,12 @@ class Header2 extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/menu/4')
+    fetch('http://localhost:3001/menu/4', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
       .then((res) => res.json())
       .then((data) => this.setState({ headerMenuItems: data }))
       .catch((err) => console.error('Failed to fetch menu data:', err));
@@ -31,6 +38,7 @@ class Header2 extends Component {
     return (
       <header className="styled-header">
         <div className="nav_logo">
+        <img src={logo} className="logo-image" alt=""></img>
           <Link to="/" className="nav-logo-link">
             ArtVista
           </Link>

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faBars, faImage, faUser, faClockRotateLeft } from '@fortawesome/free-solid-svg-icons';
 import './style.css';
 import { Link, Outlet } from 'react-router-dom';
+import logo from './images/logo2.png';
 
 const iconMapping = {
   faImage: faImage,
@@ -21,7 +22,12 @@ class Sidebar extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/menu/3')
+    fetch('http://localhost:3001/menu/3', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
       .then((res) => res.json())
       .then((data) => this.setState({ sideBarMenuItems: data }))
       .catch((err) => console.error('Failed to fetch menu data:', err));
@@ -40,7 +46,7 @@ class Sidebar extends Component {
       <div className="container">
         <div style={{ width: isOpen ? '200px' : '50px' }} className="sidebar">
           <div className="top_section">
-            <h1 style={{ display: isOpen ? 'block' : 'none' }} className="SideBarlogo">Logo</h1>
+            <img src = {logo} style={{ display: isOpen ? 'block' : 'none' }} className="SideBarlogo"></img>
             <div style={{ marginLeft: isOpen ? '50px' : '0px' }} className="bars">
               <FontAwesomeIcon icon={faBars} onClick={this.toggle} style={{ color: "#f6cfa0", position: "relative", justifyItems: "center" }} />
             </div>

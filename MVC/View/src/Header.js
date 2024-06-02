@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import './header.css';
+import logo from './images/logo2.png';
 
 class Header extends Component {
   constructor(props) {
@@ -13,7 +14,12 @@ class Header extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/menu/1')
+    fetch('http://localhost:3001/menu/1', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
       .then((res) => 
        res.json()
       )
@@ -29,12 +35,16 @@ class Header extends Component {
 
   render() {
     const { isToggleOpen, headerMenuItems } = this.state;
+    if(!headerMenuItems){
+      return <div>loading</div>
+    }
 
     return (
       <header className="styled-header">
         <div className="nav_logo">
+          <img src={logo} className="logo-image" alt=""></img>
           <Link to="/" className="nav-logo-link">
-            ArtVista
+           ArtVista
           </Link>
         </div>
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './homepage.css';
+import logo from './images/LOGO.png'
 
 class Home extends Component {
   constructor(props) {
@@ -11,7 +12,12 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/pages/6')
+    fetch('http://localhost:3001/pages/6', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
       .then(response => response.json())
       .then(data => this.setState({ homepage: data }))
       .catch(error => console.error('Error fetching page data:', error));
@@ -28,9 +34,9 @@ class Home extends Component {
       <div className="homeContainer">
         <div className="homeContentContainer">
           <h1 className="homeTitle">{homepage.title}</h1>
+          <img src={logo} className='homeLogo'></img>
           <p className='homeDescription'>{homepage.content}</p>
           <div className="homeButtons">
-            <Link to="/signup" className="homeButton">{homepage.signupButton}</Link>
             <Link to="/signin" className="homeButton">{homepage.signinButton}</Link>
           </div>
         </div>

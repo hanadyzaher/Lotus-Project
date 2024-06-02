@@ -25,6 +25,12 @@
     text-decoration: none;
 
 }
+/*
+.footer-menu li:first-child:hover {
+    cursor: pointer;
+    background: rgb(227, 214, 187);
+    border-radius: 4px;
+  }*/
 
 .footer-menu li:first-child {
     margin-left: 20px;
@@ -188,19 +194,21 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
-    background-image: url("./images/gallery.jpg");
+    background-image: url('./images/gallery.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+  
 .firstPageRect {
     position: relative;
     top: 20%;
     margin: 20px auto;
     max-width: 800px;
-}
-
-.firstPageRect2 {
+    margin-left: 35%;
+  }
+  
+  .firstPageRect2 {
     background-color: white;
     position: relative;
     top: 20%;
@@ -209,9 +217,13 @@
     border-radius: 10px;
     justify-content: center;
     align-items: center;
-}
-
-.insideRectIcon {
+    width: 60%;
+  }
+  
+  
+  .insideRectIcon {
+    height: 50%;
+    width: 100%;
     top: 30%;
     border: 2px dashed #ccc;
     border-radius: 5px;
@@ -220,29 +232,29 @@
     cursor: pointer;
 }
 
-.FiUpload {
-    font-size: 24px;
-}
-
 .uploadIcon {
-    font-size: 40px;
+    font-size: 30px;
 }
-
-.generatButton {
-    position: relative;
+  
+  .uploadButton,
+  .generateButton {
     background-color: #a08a74;
     border: none;
     margin: 2%;
     padding: 4%;
-    left: 23%;
-    border-radius: 6%;
     color: white;
     text-align: center;
     justify-content: center;
     cursor: pointer;
-
-}
-
+    width: 300px;
+    font-size: 16px;
+  }
+  
+  .uploadButton:hover,
+  .generateButton:hover {
+    opacity: 0.8;
+  }
+  
 .container {
     display: flex;
 }
@@ -263,7 +275,8 @@
 }
 
 .SideBarlogo {
-    font-size: 20px;
+    height: 30%;
+    width: 30%;
     margin-right: 10px;
     margin: 3px;
 }
@@ -318,16 +331,16 @@
 }
 
 .startTour {
-    width: 10%;
-    height: 10%;
+    width: 12%;
+    height: 12%;
     position: relative;
     border-radius: 95px;
     text-align: center;
     justify-content: center;
-    top: 80%;
+    top: 70%;
     left: 70%;
     font-family: "Khula", sans-serif;
-    padding: 1%;
+    padding: 1.5%;
     font-weight: 600;
     font-size: 25px;
     font-style: normal;
@@ -345,49 +358,136 @@
     color: black;
     padding: 2%;
     top: 30%;
+}/* Privacy Policy styles */
+.privacy-policy-container {
+    display: flex; /* Add this to enable flexbox */
+    position: relative;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    padding: 20px;
+    color: white;
 }
 
-
-.privacy-policy-container {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
+.privacy-policy-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: #F1DDBF;
-    background-repeat: no-repeat;
-    background-size: cover;
-    
+    background: url('./images/privacy.png') no-repeat center center/cover;
+    opacity: 0.5; /* Adjust the opacity to make the image less prominent */
+    z-index: -1;
 }
 
-.privacy-policy-container h1 {
-    margin: 2%;
-    color: #55442f;
-    font-family: "Oleo Script", system-ui;
-    text-align: center;
-    position: relative;
-
+.privacy-sidebar {
+    flex: 0 0 250px;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+    border-radius: 10px;
+    height: 10%;
 }
 
-.privacy-policy-container h2 {
-    color: black;
+
+.privacy-sidebar h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
     font-family: "Noto Serif", serif;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: italic;
-    font-size: 20px;
-    text-align: center;
-    position: relative;
-
 }
 
-.privacy-policy-container p {
-    margin-bottom: 1%;
+.privacy-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.privacy-sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.privacy-sidebar ul li a {
+    text-decoration: none;
+    color: #F1DDBF;
+    text-align: center;
     font-family: "Noto Serif", serif;
     font-optical-sizing: auto;
     font-weight: 400;
-    text-align: center;
-    position: relative;
-    font-size: 16px;
-
+    font-size: 12px;
 }
+
+.privacy-sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+.privacy-content {
+    flex: 1;
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff; /* Text color */
+    overflow-y: auto; /* Ensure the content is scrollable */
+}
+
+.privacy-content h1 {
+    font-size: 2rem;
+    margin-bottom: 2%;
+    font-family: "Oleo Script", system-ui;
+    text-align: center;
+}
+
+.privacy-content h2 {
+    font-size: 1.5rem;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    text-align: center;
+    margin-top: 4%;
+    font-family: "Noto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.privacy-content p {
+    margin-bottom: 1%;
+    text-align: center;
+    font-family: "Noto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-size: 16px;
+}
+.modal {
+    display: block; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    height: 40%; 
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  

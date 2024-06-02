@@ -10,7 +10,12 @@ class Footer extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/menu/2')
+    fetch('http://localhost:3001/menu/2', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
       .then((res) => res.json())
       .then((data) => this.setState({ footerMenuItems: data }))
       .catch((err) => console.error('Failed to fetch menu data:', err));
