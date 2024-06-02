@@ -1,26 +1,19 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faKey, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import Web3 from "web3";
+
 import { Link } from "react-router-dom";
 import "./SignIn.css";
 import Header from "./Header";
+import Footer from "./Footer";
 
-const iconMapping = {
-  faGoogle: faGoogle,
-  faEnvelope: faEnvelope,
-  faKey: faKey,
-  faEye: faEye,
-  faEyeSlash: faEyeSlash,
-};
+
 
 class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showPassword: false,
-      passIconIndex: 2, // Index of the icon to show in password input
       pageData: null,
+      account: null, // For MetaMask account
     };
   }
 
@@ -43,27 +36,29 @@ class SignIn extends Component {
       .catch((err) => console.error('Failed to fetch page data:', err));
   }
 
-  handleChange = (e) => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
+  connectMetaMask = async () => {
+    if (window.ethereum) {
+      const web3 = new Web3(window.ethereum);
+      try {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        this.setState({ account: accounts[0] });
+        console.log("Connected account:", accounts[0]);
+      } catch (error) {
+        console.error("Failed to connect to MetaMask:", error);
+      }
+    } else {
+      console.error("MetaMask not detected");
+      alert("MetaMask not detected. Please install MetaMask and try again.");
+    }
   };
 
-  togglePasswordVisibility = () => {
-    this.setState((prevState) => ({ showPassword: !prevState.showPassword }));
-  };
 
-  togglePassIcon = () => {
-    this.setState((prevState) => ({
-      passIconIndex: prevState.passIconIndex === 1 ? 2 : 1,
-      showPassword: !prevState.showPassword,
-    }));
-  };
 
   render() {
-    const { showPassword, passIconIndex, pageData } = this.state;
+    const {pageData, account } = this.state;
 
     if (!pageData) {
-      return <div>Loading...</div>;
+      return <div>Loading JSON Data</div>;
     }
 
     const { page, form } = pageData;
@@ -72,15 +67,24 @@ class SignIn extends Component {
       <div className="signInMainDev">
         <Header />
         <h1 className="signInTitle">{page.title}</h1>
-          <form className="signInForm">
-            <h2 className="signInformTitle">{form.title}</h2>
-            <h1 className="signInText">{form.text}</h1>
-            <Link to="/firstpage" className="signinButton">
-              {form.signinButton}
-            </Link>
-          </form>
-        
+        <form className="signInForm">
+          <h2 className="signInformTitle">{form.title}</h2>
+          <h1 className="signInText">{form.text}</h1>
+          {account ? (
+            <div>
+              <p>Connected Account: {account}</p>
+            </div>
+          ) : (
+            <button type="button" className="connectMetaMaskButton" onClick={this.connectMetaMask}>
+              Connect to MetaMask
+            </button>
+          )}
+          <Link to="/firstpage" className="signinButton">
+            {form.signinButton}
+          </Link>
+        </form>
         <div className="half-circle"></div>
+        <Footer/>
       </div>
     );
   }

@@ -62,7 +62,7 @@ class ContactUs extends Component {
 
 
     if (!contactusPage || !form) {
-      return <div>Loading...</div>;
+      return <div>Loading JSON Data</div>;
     }
 
     return (

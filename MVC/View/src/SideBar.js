@@ -46,7 +46,7 @@ class Sidebar extends Component {
       <div className="container">
         <div style={{ width: isOpen ? '200px' : '50px' }} className="sidebar">
           <div className="top_section">
-            <img src = {logo} style={{ display: isOpen ? 'block' : 'none' }} className="SideBarlogo"></img>
+            <img src = {logo} style={{ display: isOpen ? 'block' : 'none' }} className="SideBarlogo" alt=''></img>
             <div style={{ marginLeft: isOpen ? '50px' : '0px' }} className="bars">
               <FontAwesomeIcon icon={faBars} onClick={this.toggle} style={{ color: "#f6cfa0", position: "relative", justifyItems: "center" }} />
             </div>

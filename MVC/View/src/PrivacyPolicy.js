@@ -27,7 +27,7 @@ class PrivacyPolicy extends Component {
     const { pageData } = this.state;
 
     if (!pageData) {
-      return <div>Loading...</div>;
+      return <div>Loading JSON Data</div>;
     }
 
     return (

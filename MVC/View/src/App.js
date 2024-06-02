@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Sidebar from './SideBar';
 import SignIn from './SignIn';
@@ -29,8 +29,7 @@ function App() {
           <Route path="/signin" element={<SignIn/>}/>
           <Route path="/contactUs" element={<ContactUs/>}/>
           <Route path="" element={<Home/>}/>
-          <Route path="/privacyPolicy" element={<PrivacyPolicy />} />  // הוספת הנתיב החדש
-
+          <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
 
 
 

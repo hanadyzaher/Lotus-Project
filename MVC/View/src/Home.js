@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './homepage.css';
-import logo from './images/LOGO.png'
+import logo from './images/LOGO.png';
 
 class Home extends Component {
   constructor(props) {
@@ -27,14 +27,14 @@ class Home extends Component {
     const { homepage } = this.state;
 
     if (!homepage) {
-      return <div>Page not found</div>;
+      return <div>Loading JSON Data</div>;
     }
 
     return (
       <div className="homeContainer">
         <div className="homeContentContainer">
           <h1 className="homeTitle">{homepage.title}</h1>
-          <img src={logo} className='homeLogo'></img>
+          <img src={logo} className='homeLogo' alt="Logo"></img>
           <p className='homeDescription'>{homepage.content}</p>
           <div className="homeButtons">
             <Link to="/signin" className="homeButton">{homepage.signinButton}</Link>
