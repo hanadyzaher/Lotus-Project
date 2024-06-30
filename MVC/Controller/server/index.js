@@ -118,6 +118,8 @@ const upload = multer({ storage: storage });
 app.post('/upload', upload.single('file'), async (req, res) => {
   const { userId, imageUrl } = req.body;
 
+  console.log('Received upload request with userId:', userId);
+
   if (!req.file && !imageUrl) {
     return res.status(400).send('No file uploaded.');
   }
@@ -143,7 +145,6 @@ app.post('/upload', upload.single('file'), async (req, res) => {
     res.status(500).json({ error: 'Database error', details: err.message });
   }
 });
-
 
 
 // Start the server and listen on port 3001

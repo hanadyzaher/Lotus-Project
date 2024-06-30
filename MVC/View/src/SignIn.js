@@ -1,150 +1,161 @@
 import React, { Component } from "react";
-import Header2 from "./Header2";
+import Web3 from "web3";
+import { Link } from "react-router-dom";
+import "./SignIn.css";
+import Header from "./Header";
 import Footer from "./Footer";
-import { FiUpload } from "react-icons/fi";
-import Sidebar from "./SideBar";
-import Modal from "./Modal";
-import GenerateImage from "./GenerateImage";
-import "./style.css"
 
-class FirstPage extends Component {
+class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isModalOpen: false,
-      selectedFile: null,
-      previewUrl: '',
-      uploadStatus: '',
-      showGenerateImage: false,
-      aiGeneratedImage: null,
+      pageData: null,
+      account: null,
+      userName: '',
+      email: '',
+      userExists: false
     };
   }
 
-  handleFileChange = (e) => {
-    const file = e.target.files[0];
-    this.setState({ 
-      selectedFile: file, 
-      previewUrl: URL.createObjectURL(file),
-      aiGeneratedImage: null, // Clear AI generated image if a new file is selected
-    });
-  };
+  componentDidMount() {
+    fetch('http://localhost:3001/data/1', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((err) => { throw err; });
+        }
+        return res.json();
+      })
+      .then((data) => {
+        this.setState({ pageData: data });
+      })
+      .catch((err) => console.error('Failed to fetch page data:', err));
+  }
 
-  handleFileUpload = async () => {
-    const { selectedFile } = this.state;
-    const userId = 1; // Replace with actual user ID from session or props
+  connectMetaMask = async () => {
+    if (window.ethereum) {
+      const web3 = new Web3(window.ethereum);
+      try {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        const account = accounts[0];
+        this.setState({ account });
 
-    if (!selectedFile) {
-      this.setState({ uploadStatus: 'No file selected' });
-      alert('No file selected');
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append('file', selectedFile);
-    formData.append('userId', userId);
-
-    try {
-      const response = await fetch('http://localhost:3001/upload', {
-        method: 'POST',
-        body: formData
-      });
-
-      if (response.ok) {
-        const result = await response.text();
-        this.setState({ uploadStatus: result });
-        alert('File uploaded successfully');
-      } else {
-        const error = await response.text();
-        this.setState({ uploadStatus: `Upload failed: ${error}` });
-        alert(`Upload failed: ${error}`);
+        // Check if user exists
+        fetch('http://localhost:3001/users/check', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ walletAddress: account }),
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.exists) {
+              this.setState({ userExists: true, userName: data.user.userName });
+              localStorage.setItem('userId', data.user.userId); // Store user ID in local storage
+            } else {
+              this.setState({ userExists: false });
+            }
+          })
+          .catch(err => console.error('Failed to check user existence:', err));
+      } catch (error) {
+        console.error("Failed to connect to MetaMask:", error);
       }
-    } catch (error) {
-      this.setState({ uploadStatus: `Upload failed: ${error.message}` });
-      alert(`Upload failed: ${error.message}`);
+    } else {
+      console.error("MetaMask not detected");
+      alert("MetaMask not detected. Please install MetaMask and try again.");
     }
   };
 
-  handleAIImageSelect = (imageUrl) => {
-    this.setState({ 
-      aiGeneratedImage: imageUrl,
-      previewUrl: imageUrl,
-      selectedFile: null, // Clear selected file if an AI image is selected
-    });
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { account, userName, email } = this.state;
+
+    fetch('http://localhost:3001/users', {
+      method: 'POST',
+      body: JSON.stringify({ walletAddress: account, userName, email }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          console.log('User saved:', data);
+          this.setState({ userExists: true });
+          localStorage.setItem('userId', data.userId); // Store user ID in local storage
+        } else {
+          console.error('Failed to save user:', data);
+        }
+      })
+      .catch(err => console.error('Failed to save user:', err));
   };
 
-  toggleModal = () => {
-    this.setState((prevState) => ({
-      isModalOpen: !prevState.isModalOpen,
-      selectedFile: null,
-      previewUrl: ''
-    }));
-  };
+  renderFormFields = () => {
+    const { pageData } = this.state;
+    const { form } = pageData;
 
-  toggleGenerateImage = () => {
-    this.setState((prevState) => ({
-      showGenerateImage: !prevState.showGenerateImage,
-    }));
+    if (!form || !form.inputs) return null;
+
+    return form.inputs.map((input) => (
+      <div key={input.inputId}>
+        <label>{input.placeholder}:</label>
+        <input
+          type={input.type}
+          value={this.state[input.name]}
+          onChange={(e) => this.setState({ [input.name]: e.target.value })}
+          required
+        />
+      </div>
+    ));
   };
 
   render() {
-    const { isModalOpen, previewUrl, uploadStatus, showGenerateImage, aiGeneratedImage } = this.state;
+    const { pageData, account, userExists, userName } = this.state;
+
+    if (!pageData) {
+      return <div>Loading JSON Data</div>;
+    }
+
+    const { page, form } = pageData;
 
     return (
-      <div>
-        <div className="firstPageDiv">
-          <Header2 />
-          <Sidebar />
-          <div className="firstPageRect">
-            <div className="firstPageRect2">
-              <div className="insideRectIcon">
-                <button className="uploadButton" onClick={this.toggleModal}>
-                  Upload Image
-                </button>
-                <button className="generateButton" onClick={this.toggleGenerateImage}>
-                  Use AI to Generate Image
-                </button>
-              </div>
-              {isModalOpen && (
-                <Modal onClose={this.toggleModal}>
-                  <div className="uploadContainer">
-                    <label htmlFor="upload-input" className="uploadLabel">
-                      <input
-                        id="upload-input"
-                        type="file"
-                        onChange={this.handleFileChange}
-                        style={{ display: 'none' }}
-                      />
-                      <div className="insideRectIcon">
-                        {previewUrl ? (
-                          <img src={previewUrl} alt="Preview" className="imagePreview" />
-                        ) : (
-                          <>
-                            <i className="FiUpload uploadIcon">
-                              <FiUpload />
-                            </i>
-                            <div className="clickDiv">Click or drag file to upload</div>
-                            <div className="typeDiv">png, jpg, jpeg</div>
-                          </>
-                        )}
-                      </div>
-                    </label>
-                    <button onClick={this.handleFileUpload} className="uploadButton">Upload</button>
-                  </div>
-                </Modal>
-              )}
-              {uploadStatus && <div>{uploadStatus}</div>}
-              {showGenerateImage && (
-                <Modal onClose={this.toggleGenerateImage} customClass="generateModal">
-                  <GenerateImage onSelectImage={this.handleAIImageSelect} onClose={this.toggleGenerateImage} />
-                </Modal>
+      <div className="signInMainDev">
+        <Header />
+        <h1 className="signInTitle">{page.title}</h1>
+        <form className="signInForm" onSubmit={this.handleSubmit}>
+          <h2 className="signInformTitle">{form.title}</h2>
+          {!account && (
+            <Link className="connectMetaMaskButton" onClick={this.connectMetaMask}>
+              {page.Button}
+            </Link>
+          )}
+          {account && (
+            <div>
+              {userExists ? (
+                <>
+                  <p>Welcome Back, {userName}!</p>
+                  <Link to="/firstpage" className="signinButton">
+                    {form.Button}
+                  </Link>
+                </>
+              ) : (
+                <>
+                  {this.renderFormFields()}
+                  <Link type="submit" className="signinButton">
+                    {form.Button}
+                  </Link>
+                </>
               )}
             </div>
-          </div>
-        </div>
+          )}
+        </form>
+        <div className="half-circle"></div>
         <Footer />
       </div>
     );
   }
 }
 
-export default FirstPage;
+export default SignIn;

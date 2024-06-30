@@ -3,9 +3,8 @@ import Header2 from "./Header2";
 import Footer from "./Footer";
 import { FiUpload } from "react-icons/fi";
 import Sidebar from "./SideBar";
-import Modal from "./Modal";
-import GenerateImage from "./GenerateImage";
-import "./style.css"
+import Modal from "./Modal"; 
+import GenerateImage from "./GenerateImage"; 
 
 class FirstPage extends Component {
   constructor(props) {
@@ -16,7 +15,7 @@ class FirstPage extends Component {
       previewUrl: '',
       uploadStatus: '',
       showGenerateImage: false,
-      aiGeneratedImage: null,
+      userId: localStorage.getItem('userId'), // Retrieve userId from local storage
     };
   }
 
@@ -24,18 +23,22 @@ class FirstPage extends Component {
     const file = e.target.files[0];
     this.setState({ 
       selectedFile: file, 
-      previewUrl: URL.createObjectURL(file),
-      aiGeneratedImage: null, // Clear AI generated image if a new file is selected
+      previewUrl: URL.createObjectURL(file) 
     });
   };
 
   handleFileUpload = async () => {
-    const { selectedFile } = this.state;
-    const userId = 1; // Replace with actual user ID from session or props
+    const { selectedFile, userId } = this.state;
 
     if (!selectedFile) {
       this.setState({ uploadStatus: 'No file selected' });
       alert('No file selected');
+      return;
+    }
+
+    if (!userId) {
+      this.setState({ uploadStatus: 'User not logged in' });
+      alert('User not logged in');
       return;
     }
 
@@ -64,14 +67,6 @@ class FirstPage extends Component {
     }
   };
 
-  handleAIImageSelect = (imageUrl) => {
-    this.setState({ 
-      aiGeneratedImage: imageUrl,
-      previewUrl: imageUrl,
-      selectedFile: null, // Clear selected file if an AI image is selected
-    });
-  };
-
   toggleModal = () => {
     this.setState((prevState) => ({
       isModalOpen: !prevState.isModalOpen,
@@ -86,8 +81,12 @@ class FirstPage extends Component {
     }));
   };
 
+  handleGeneratedImageSelect = (imageUrl) => {
+    this.setState({ previewUrl: imageUrl, selectedFile: imageUrl, isModalOpen: true, showGenerateImage: false });
+  };
+
   render() {
-    const { isModalOpen, previewUrl, uploadStatus, showGenerateImage, aiGeneratedImage } = this.state;
+    const { isModalOpen, previewUrl, uploadStatus, showGenerateImage } = this.state;
 
     return (
       <div>
@@ -114,7 +113,7 @@ class FirstPage extends Component {
                         onChange={this.handleFileChange}
                         style={{ display: 'none' }}
                       />
-                      <div className="insideRectIcon2">
+                      <div className="insideRectIcon">
                         {previewUrl ? (
                           <img src={previewUrl} alt="Preview" className="imagePreview" />
                         ) : (
@@ -128,14 +127,14 @@ class FirstPage extends Component {
                         )}
                       </div>
                     </label>
-                    <button className="uploadB" onClick={this.handleFileUpload}>Upload</button>
+                    <button onClick={this.handleFileUpload}>Upload</button>
                   </div>
                 </Modal>
               )}
               {uploadStatus && <div>{uploadStatus}</div>}
               {showGenerateImage && (
-                <Modal onClose={this.toggleGenerateImage} customClass="generateModal">
-                  <GenerateImage onSelectImage={this.handleAIImageSelect} onClose={this.toggleGenerateImage} />
+                <Modal onClose={this.toggleGenerateImage}>
+                  <GenerateImage onImageSelect={this.handleGeneratedImageSelect} />
                 </Modal>
               )}
             </div>
