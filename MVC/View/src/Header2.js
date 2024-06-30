@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import './header.css';
 import logo from './images/logo2.png';
-
 
 class Header2 extends Component {
   constructor(props) {
@@ -17,9 +16,7 @@ class Header2 extends Component {
   componentDidMount() {
     fetch('http://localhost:3001/menu/4', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      
     })
       .then((res) => res.json())
       .then((data) => this.setState({ headerMenuItems: data }))
@@ -32,13 +29,19 @@ class Header2 extends Component {
     }));
   };
 
+  handleSignOut = () => {
+    localStorage.removeItem('walletAddress'); // Remove wallet address from local storage
+    this.props.navigate('/'); // Redirect to home page
+    window.location.reload(); // Reload the page to reset MetaMask connection
+  };
+
   render() {
     const { isToggleOpen, headerMenuItems } = this.state;
 
     return (
       <header className="styled-header">
         <div className="nav_logo">
-        <img src={logo} className="logo-image" alt=""></img>
+          <img src={logo} className="logo-image" alt=""></img>
           <Link to="/" className="nav-logo-link">
             ArtVista
           </Link>
@@ -47,9 +50,15 @@ class Header2 extends Component {
         <ul className={`nav-menu ${isToggleOpen ? "open" : ""}`}>
           {headerMenuItems.map((menuItem, index) => (
             <li key={index}>
-              <Link to={menuItem.url} className="nav-menu-list">
-                {menuItem.text}
-              </Link>
+              {menuItem.text === 'Sign Out' ? (
+                <Link to="/" onClick={this.handleSignOut} className="nav-menu-list">
+                  {menuItem.text}
+                </Link>
+              ) : (
+                <Link to={menuItem.url} className="nav-menu-list">
+                  {menuItem.text}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
@@ -59,4 +68,9 @@ class Header2 extends Component {
   }
 }
 
-export default Header2;
+const Header2WithNavigate = (props) => {
+  const navigate = useNavigate();
+  return <Header2 {...props} navigate={navigate} />;
+};
+
+export default Header2WithNavigate;

@@ -24,9 +24,7 @@ class Sidebar extends Component {
   componentDidMount() {
     fetch('http://localhost:3001/menu/3', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+     
     })
       .then((res) => res.json())
       .then((data) => this.setState({ sideBarMenuItems: data }))

@@ -14,9 +14,7 @@ class Home extends Component {
   componentDidMount() {
     fetch('http://localhost:3001/pages/6', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      
     })
       .then(response => response.json())
       .then(data => this.setState({ homepage: data }))
@@ -35,9 +33,9 @@ class Home extends Component {
         <div className="homeContentContainer">
           <h1 className="homeTitle">{homepage.title}</h1>
           <img src={logo} className='homeLogo' alt="Logo"></img>
-          <p className='homeDescription'>{homepage.content}</p>
+          <p className='homeDescription'>{homepage.content1}</p>
           <div className="homeButtons">
-            <Link to="/signin" className="homeButton">{homepage.signinButton}</Link>
+            <Link to="/signin" className="homeButton">{homepage.Button}</Link>
           </div>
         </div>
       </div>

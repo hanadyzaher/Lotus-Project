@@ -14,9 +14,7 @@ class PrivacyPolicy extends Component {
   componentDidMount() {
     fetch('http://localhost:3001/pages/7', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      
     })
       .then(response => response.json())
       .then(data => this.setState({ pageData: data }))
@@ -30,25 +28,37 @@ class PrivacyPolicy extends Component {
       return <div>Loading JSON Data</div>;
     }
 
+    // Parse the content4 field correctly
+    let contentArray = [];
+    if (pageData.content4) {
+      contentArray = pageData.content4.split('|||').map(section => {
+        const parts = section.split(':');
+        return {
+          title: parts[0].trim(),
+          content: parts.slice(1).join(':').trim()
+        };
+      });
+    }
+
     return (
       <div>
         <Header />
         <div className="privacy-policy-container">
           <div className="privacy-sidebar">
-            <h3>On This Page</h3>
+            <h3>Contents: </h3>
             <ul>
-              {pageData.sections.map((section, index) => (
+              {contentArray.map((section, index) => (
                 <li key={index}>
-                  <a href={`#${section.id}`}>{section.title}</a>
+                  <a href={`#section-${index}`}>{section.title}</a>
                 </li>
               ))}
             </ul>
           </div>
           <div className="privacy-content">
             <h1>{pageData.title}</h1>
-            <p>{pageData.content}</p>
-            {pageData.sections && pageData.sections.map((section, index) => (
-              <div key={index} id={section.id}>
+            <p>{pageData.content1}</p>
+            {contentArray.map((section, index) => (
+              <div key={index} id={`section-${index}`}>
                 <h2>{section.title}</h2>
                 <p>{section.content}</p>
               </div>

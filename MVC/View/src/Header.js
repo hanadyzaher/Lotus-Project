@@ -16,9 +16,6 @@ class Header extends Component {
   componentDidMount() {
     fetch('http://localhost:3001/menu/1', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
     })
       .then((res) => 
        res.json()

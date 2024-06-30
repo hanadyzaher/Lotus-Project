@@ -15,9 +15,7 @@ class VirtualGallery extends Component {
   componentDidMount() {
     fetch('http://localhost:3001/pages/5', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      
     })
       .then((res) => res.json())
       .then((data) => this.setState({ virtualGalleryPage: data }))
@@ -40,7 +38,7 @@ class VirtualGallery extends Component {
             </i>
           </Link>
         </div>
-        <Link className="startTour" to="./StartTour">{virtualGalleryPage.startButton}</Link>
+        <Link className="startTour" to="./StartTour">{virtualGalleryPage.Button}</Link>
       </div>
     );
   }

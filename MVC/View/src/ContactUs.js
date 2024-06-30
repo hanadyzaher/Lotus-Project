@@ -31,9 +31,7 @@ class ContactUs extends Component {
   componentDidMount() {
     fetch('http://localhost:3001/data/4', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+     
     })  // Fetch combined data from the new endpoint
       .then((res) => {
         if (!res.ok) {
@@ -98,7 +96,7 @@ class ContactUs extends Component {
                   ))}
                 </div>
                 <Link to=" " className="sendMessage">
-                  {form.sendButton}
+                  {form.Button}
                 </Link>
               </form>
             }

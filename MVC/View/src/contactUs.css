@@ -109,7 +109,7 @@ textarea {
   width: auto; /* התאמת הרוחב של הכפתור */
   max-width: 30%; /* קביעת רוחב מקסימלי לכפתור */
   right: 20%;
-  top:65%;
+  top:75%;
 }
 
 .sendMessage:hover {
